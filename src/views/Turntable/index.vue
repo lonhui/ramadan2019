@@ -38,7 +38,7 @@ export default {
     data(){
         return{
             prizeCallShow:false,
-            prizeShow:true,
+            prizeShow:false,
             prizeList:[
                 {
                     id:1,
