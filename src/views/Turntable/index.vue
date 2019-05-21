@@ -146,6 +146,7 @@ export default {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     text-align: center;
+    font-family:OpenSans;
 }
 .header{
     width: 2.2rem;
@@ -174,8 +175,9 @@ export default {
     left: 0;
 }
 .prize-pic img{
-    width: 0.2rem;
-    height: 0.2rem;
+    width: 0.15rem;
+    height: 0.15rem;
+    margin-right: 0.03rem;
 }
 .turntable_base{
     width: 2.5rem;
@@ -207,8 +209,7 @@ export default {
     display: flex;
     flex-direction: row;
     width: 0.7rem;
-    height: 0.2rem;
-    line-height: 0.2rem;
+    line-height: 0.15rem;
     text-align: left;
     position: absolute;
     top: 0;
@@ -216,50 +217,50 @@ export default {
     z-index: 2
 }
 #prize-list .prize-item:first-child {
-    top: 0.8rem;
-    left: 1.6rem;
+    top: 0.78rem;
+    left: 1.65rem;
     transform: rotate(290deg);
     transform-origin:0% 50%;
     color: #fff;
 }
 #prize-list .prize-item:nth-child(2) {
-    top: 1.08rem;
-    left: 1.92rem;
+    top: 1.09rem;
+    left: 1.94rem;
     transform: rotate(335deg);
     transform-origin:0% 50%;
     color: #000;
 }
 #prize-list .prize-item:nth-child(3) {
     top: 1.53rem;
-    left: 1.93rem;
+    left: 1.94rem;
     transform: rotate(380deg);
     transform-origin:0% 50%;
     color: #fff;
 }
 #prize-list .prize-item:nth-child(4) {
-    top: 1.85rem;
-    left: 1.62rem;
+    top: 1.87rem;
+    left: 1.64rem;
     transform: rotate(425deg);
     transform-origin:0% 50%;
     color: #000;
 }
 #prize-list .prize-item:nth-child(5) {
-    top: 1.85rem;
+    top: 1.88rem;
     left: 1.15rem;
     transform: rotate(470deg);
     transform-origin:0% 50%;
     color: #fff;
 }
 #prize-list .prize-item:nth-child(6) {
-    top: 1.55rem;
-    left: 0.85rem;
+    top: 1.53rem;
+    left: 0.83rem;
     transform: rotate(515deg);
     transform-origin:0% 50%;
     color: #000;
 }
 #prize-list .prize-item:nth-child(7) {
     top: 1.1rem;
-    left: 0.9rem;
+    left: 0.85rem;
     transform: rotate(560deg);
     transform-origin:0% 50%;
     color: #fff;

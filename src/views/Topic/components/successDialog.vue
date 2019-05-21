@@ -49,6 +49,7 @@ export default {
     background-size: 100% 100%; 
     background-repeat: no-repeat; 
     margin: 1.56rem auto 0;
+    font-family:OpenSans;
     position: relative;
 }
 .button{

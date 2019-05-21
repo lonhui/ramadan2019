@@ -40,6 +40,7 @@ export default {
   margin: 0 auto;
   background-color: #fff;
   margin-top: 2rem;
+  font-family:OpenSans;
   position: relative;
 }
 .titleImg {

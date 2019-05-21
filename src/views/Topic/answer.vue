@@ -39,7 +39,8 @@ export default {
     background: url("../../../static/images/capingvcr_bg@2x.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    text-align: center
+    text-align: center;
+    font-family:OpenSans;
 }
 .title{
     width: 1.74rem;

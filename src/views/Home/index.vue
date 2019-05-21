@@ -81,6 +81,7 @@ export default {
 }
 .butBox {
   padding-top: 4.85rem;
+  font-family:OpenSans;
 }
 .button {
   width: 1.32rem;

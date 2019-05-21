@@ -90,6 +90,9 @@ export default {
 </script>
 
 <style scoped>
+#problem{
+  font-family:OpenSans;
+}
 .problem_blac {
   background-color: #f6f6f6;
   padding: 0.18rem;

@@ -33,13 +33,13 @@ export default {
           id: 2,
           title: "QUIZ 02",
           topic: "xxxxxxx",
-          type: 1
+          type: 2
         },
         {
           id: 3,
           title: "QUIZ 03",
           topic: "xxxxxxx",
-          type: 3
+          type: 1
         },
         {
           id: 4,
@@ -109,10 +109,11 @@ export default {
 <style scoped>
 #list {
   width: 3.6rem;
-  /* height: 7.5rem; */
+  height: 8.1rem;
   background: url("../../../static/images/capingvcr_thrcaping_bgpanjang@2x.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  font-family:OpenSans;
 }
 .listBox {
   padding: 0.17rem;

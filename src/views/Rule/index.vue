@@ -42,6 +42,7 @@ export default {};
 #rule{
     padding: 0.1rem;
     background-color: #f6f6f6;
+    font-family:OpenSans;
 }
 header{
     height: 0.5rem;

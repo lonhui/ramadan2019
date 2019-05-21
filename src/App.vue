@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <login :count = count v-if="loginShow"></login>
-    <transition name="fade">
-      <router-view/>
+    <transition :name="transitionName">
+      <keep-alive :include="keepAlive">
+        <router-view class="Router"/>
+      </keep-alive>
     </transition>
   </div>
 </template>
@@ -15,7 +17,9 @@ export default {
   data(){
     return{
       count:0,
-      loginShow:true
+      loginShow:true,
+      keepAlive: 'main-keep-alive',  //需要缓存的页面 例如首页
+      transitionName: 'slide-right', //初始过渡动画方向
     }
   },
   components:{
@@ -58,7 +62,19 @@ export default {
       }
       this.loginShow = false
     }
-  }
+  },
+  watch: {
+      $route(to, from) {
+        // 切换动画
+        let isBack = this.$router.isBack // 监听路由变化时的状态为前进还是后退
+        if (isBack) {
+          this.transitionName = 'slide-left'
+        } else {
+          this.transitionName = 'slide-right'
+        }
+        this.$router.isBack = false
+      }
+    }
 }
 </script>
 
@@ -122,16 +138,35 @@ hr {
     border: none;
     height: 1px;
 }
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .2s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+/* --------------------------------------- */
+@font-face
+{
+    font-family: OpenSans;
+    src: url("../static/font/OpenSans-Semibold-webfont.ttf");
 }
 
 .butt:active{
   opacity:0.4;
   transform: translateY(4px);
 }
+.Router {
+      position: absolute;
+      height: 100%;
+      transition: all .377s ease;
+      will-change: transform;
+      top: 0;
+      backface-visibility: hidden;
+      perspective: 1000;
+    }
+    .slide-left-enter,
+    .slide-right-leave-active {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+
+    .slide-left-leave-active,
+    .slide-right-enter {
+      opacity: 0;
+      transform: translate3d(100%, 0 ,0);
+    }
 </style>
