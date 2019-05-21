@@ -3,7 +3,7 @@
     <login :count = count v-if="loginShow"></login>
     <transition :name="transitionName">
       <keep-alive :include="keepAlive">
-        <router-view class="Router"/>
+        <router-view class="Router" v-wechat-title="$route.meta.title"/>
       </keep-alive>
     </transition>
   </div>

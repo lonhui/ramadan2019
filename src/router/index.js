@@ -11,17 +11,20 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: () => import("@/views/Home/index")
+      component: () => import("@/views/Home/index"),
+      meta: {title: "Ramadan"}
     },
     {
       path: '/list',
       name: "List",
-      component: () => import("@/views/Topic/list")
+      component: () => import("@/views/Topic/list"),
+      meta: {title: "QUIZ"}
     },
     {
       path: '/rule',
       name: "Rule",
-      component: () => import("@/views/Rule/index")
+      component: () => import("@/views/Rule/index"),
+      meta: {title: "Syarat dan Ketentuan"}
     },
     {
       path: '/answer',
@@ -36,7 +39,8 @@ export default new Router({
     {
       path: '/turntable',
       name: "Turntable",
-      component: () => import("@/views/Turntable/index")
+      component: () => import("@/views/Turntable/index"),
+      meta: {title: "THR Caping"}
     }
   ]
 })

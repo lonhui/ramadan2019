@@ -64,6 +64,7 @@ export default {
     errorDialog
   },
   created() {
+    document.title = 'QUIZ 02';
     console.log("获取题目请求！！！");
   },
   methods: {

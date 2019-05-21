@@ -17,6 +17,7 @@ export default {
         }
     },
     created(){
+        document.title = 'QUIZ 01';
         console.log("答案是否正确："+this.$router.currentRoute.params.answerResult)
         console.log("获取答案请求！！！")
     },
