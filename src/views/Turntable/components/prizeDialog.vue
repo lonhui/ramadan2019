@@ -2,11 +2,11 @@
     <div id="prizeDialog" @touchmove.prevent>
         <div class="box">
             <!-- 积分icon -->
-            <img class="icon" v-if="type === 1" src="@/assets/icon_poin@2x.png" alt="">
+            <img class="icon" v-if="type === 1" src="static/images/icon_poin@2x.png" alt="">
             <!-- GOPAY icon -->
-            <img class="icon" v-if="type === 2" src="@/assets/icon_gopay@2x.png" alt="">
+            <img class="icon" v-if="type === 2" src="static/images/icon_gopay@2x.png" alt="">
             <!-- OVO icon -->
-            <img class="icon" v-if="type === 3" src="@/assets/icon_ovo@2x.png" alt="">
+            <img class="icon" v-if="type === 3" src="static/images/icon_ovo@2x.png" alt="">
             <!-- 获得积分 -->
             <p class="successText" v-if="type === 1">
                 Selamat kamu dapat THR Poin Caping senilai <span style="color:red">{{prize}}</span>.
@@ -22,7 +22,7 @@
             <input type="number"  placeholder="08xxxxxxxxxx" v-if="type !== 1">
             <div class="button" @click="close">Kirim</div>
         </div>
-        <img class="header" src="@/assets/word_selamat@2x.png" alt="">
+        <img class="header" src="static/images/word_selamat@2x.png" alt="">
     </div>
 </template>
 
@@ -56,7 +56,7 @@ export default {
 .box{
     width: 2.75rem;
     height: 2.2rem;
-    background: url('../../../assets/bg@2x.png'); 
+    background: url('../../../../static/images/bg@2x.png'); 
     background-size: 100% 100%; 
     background-repeat: no-repeat; 
     margin: 1.56rem auto 0;

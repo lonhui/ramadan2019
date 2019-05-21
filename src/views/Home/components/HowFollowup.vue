@@ -1,7 +1,7 @@
 <template>
   <div id="followup">
     <div class="box">
-      <img class="titleImg" src="@/assets/title_thecaping.png" alt>
+      <img class="titleImg" src="static/images/title_thecaping.png" alt>
       <p class="title">Cara Ikutan</p>
       <ul>
         <li>Periode event 29 Mei -7 Juni 2019.</li>

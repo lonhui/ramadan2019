@@ -110,7 +110,7 @@ export default {
 #list {
   width: 3.6rem;
   /* height: 7.5rem; */
-  background: url("../../assets/capingvcr_thrcaping_bgpanjang@2x.png");
+  background: url("../../../static/images/capingvcr_thrcaping_bgpanjang@2x.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -160,7 +160,7 @@ export default {
 /* 样式1 正在进行*/
 .itemColor1 .itemHeader {
   color: #fff;
-  background: url("../../assets/quiz_bg_green@2x.png");
+  background: url("../../../static/images/quiz_bg_green@2x.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -174,7 +174,7 @@ export default {
 /* 样式2 过去*/
 .itemColor2 .itemHeader {
   color: #fff;
-  background: url("../../assets/quiz_bg_green@2x.png");
+  background: url("../../../static/images/quiz_bg_green@2x.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -188,7 +188,7 @@ export default {
 /* 样式3 未来*/
 .itemColor3 .itemHeader {
   color: rgba(0, 0, 0, 0.3);
-  background: url("../../assets/quiz_bg_white@2x.png");
+  background: url("../../../static/images/quiz_bg_white@2x.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }

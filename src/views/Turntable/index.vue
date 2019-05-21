@@ -1,7 +1,7 @@
 <template>
     <div id="Turntable">
         <!-- 转盘页面 -->
-        <img class="header" src="../../assets/title_thecaping.png" alt="">
+        <img class="header" src="static/images/title_thecaping.png" alt="">
         <div class="turntable">
             <ul id="prize-list">
                 <li class="prize-item" v-for="(item,index) in prizeList" :key="index">
@@ -13,10 +13,10 @@
                     </div>
                 </li>
             </ul>
-            <img class="turntable_border" src="../../assets/bg_turntable.png" alt="">
+            <img class="turntable_border" src="static/images/bg_turntable.png" alt="">
         </div>
-        <img class="turntable_base" src="../../assets/Layer20.png" alt="">
-        <img class="button" @click="rotate" src="../../assets/but_ambilthr.png" alt="">
+        <img class="turntable_base" src="static/images/Layer20.png" alt="">
+        <img class="button" @click="rotate" src="static/images/but_ambilthr.png" alt="">
         <transition name="bounce">
             <prizeDialogCall v-if="prizeCallShow" @on-close="closeDailog"></prizeDialogCall>
         </transition>
@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import coinImg from "@/assets/icon_poin@2x.png";
-import rpImg from "@/assets/icon_gopay@2x.png";
-import dianImg from "@/assets/icon_ovo@2x.png";
+import coinImg from "../../../static/images/icon_poin@2x.png";
+import rpImg from "../../../static/images/icon_gopay@2x.png";
+import dianImg from "../../../static/images/icon_ovo@2x.png";
 import prizeDialogCall from "./components/prizeDialog_call"//话费奖品弹框
 import prozeDialog from "./components/prizeDialog"//其余奖品弹框
 
@@ -142,7 +142,7 @@ export default {
 #Turntable{
     width: 3.6rem;
     height: 6.4rem;
-    background: url("../../assets/turntable_bg.png");
+    background: url("../../../static/images/turntable_bg.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     text-align: center;
@@ -195,7 +195,7 @@ export default {
     width: 2.8rem;
     height: 2.8rem;
     font-weight: 600;
-    background: url("../../assets/bg_Layer.png");
+    background: url("../../../static/images/bg_Layer.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     transform:rotate(337.5deg);

@@ -45,7 +45,7 @@ export default {
 .box{
     width: 2.75rem;
     height: 2.02rem;
-    background: url('../../../assets/Popups_bg@2x.png'); 
+    background: url('../../../../static/images/Popups_bg@2x.png'); 
     background-size: 100% 100%; 
     background-repeat: no-repeat; 
     margin: 1.56rem auto 0;

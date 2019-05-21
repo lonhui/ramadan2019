@@ -1,7 +1,7 @@
 <template>
     <div id="answer">
         <!-- 答案页面 -->
-        <img class="title" src="@/assets/word_tahukankamu@2x.png" alt="">
+        <img class="title" src="static/images/word_tahukankamu@2x.png" alt="">
         <div class="box">
             <p>{{text}}</p>
         </div>
@@ -36,7 +36,7 @@ export default {
 #answer{
     width: 3.6rem;
     height: 6.4rem;
-    background: url("../../assets/capingvcr_bg@2x.png");
+    background: url("../../../static/images/capingvcr_bg@2x.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     text-align: center

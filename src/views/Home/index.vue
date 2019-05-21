@@ -13,7 +13,7 @@
 
 <script>
 import howFollowup from "./components/HowFollowup";
-import {setCookie} from "@/util/Cookie"
+import {setCookie,getCookie} from "@/util/Cookie"
 import {apiPost} from "@/api/index"
 
 export default {
@@ -24,7 +24,7 @@ export default {
     };
   },
   components: {
-    "v-howFollowup": howFollowup
+    "v-howFollowup": howFollowup,
   },
   created(){
     this.getUidAndDid()
@@ -45,11 +45,28 @@ export default {
         const url = window.location.href
         let uid = url.match(/[^a-zA-Z0-9]u{1,1}=([0-9]+)/)
         let did = url.match(/[^a-zA-Z0-9]c{1,1}=([a-z0-9]+)/)
-        this.user.uid = uid[1]
-        this.user.deviceId = did[1]
-        uid[1] && uid[1] !== '' ? setCookie("uid",uid[1],1) :null
-        did[1] && did[1] !== '' ? setCookie("did",did[1],1) :null
-    }
+        if(uid && uid.length >= 2){
+          this.user.uid = uid[1]
+          setCookie("uid",uid[1],1)
+        }else{
+          if(getCookie("uid")){
+            this.user.uid = getCookie("uid")
+          }else{
+            console.log("未登陆！！！")
+          }
+        }
+        if(did && did.length >= 2){
+          this.user.deviceId = did[1]
+          setCookie("did",did[1],1)
+        }else{
+          if(getCookie("did")){
+            this.user.deviceId = getCookie("did")
+          }else{
+            console.log("未登陆！！！")
+          }
+        }
+    },
+    
   }
 };
 </script>
@@ -58,7 +75,7 @@ export default {
 #home {
   width: 3.6rem;
   height: 6.4rem;
-  background: url("../../assets/capingvcr_bg_thecaping@2x.png");
+  background: url("../../../static/images/capingvcr_bg_thecaping@2x.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }

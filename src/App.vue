@@ -1,12 +1,62 @@
 <template>
   <div id="app">
+    <login :count = count v-if="loginShow"></login>
     <router-view/>
   </div>
 </template>
 
 <script>
+import login from "@/components/loginPage"
+
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+    return{
+      count:0,
+      loginShow:true
+    }
+  },
+  components:{
+    login
+  },
+  created(){
+    this.preload()
+  },
+  methods:{
+    preload(){
+      let imgs = [
+        "static/images/capingvcr_bg_thecaping@2x.png",
+        "static/images/capingvcr_bg@2x.png",
+        "static/images/capingvcr_thrcaping_bgpanjang@2x.png",
+        "static/images/quiz_bg@2x.png",
+        "static/images/turntable_bg.png",
+        "static/images/bg_Layer.png",
+        "static/images/bg_turntable.png",
+        "static/images/bg@2x.png",
+        "static/images/Popups_bg@2x.png",
+        "static/images/quiz_bg_green@2x.png",
+        "static/images/title_thecaping.png",
+        "static/images/word_selamat@2x.png",
+        "static/images/word_tahukankamu@2x.png",
+
+        "static/images/but_ambilthr.png",
+        "static/images/icon_gopay@2x.png",
+        "static/images/icon_ovo@2x.png",
+        "static/images/icon_poin@2x.png",
+        "static/images/Layer20.png",
+        "static/images/popups_bg_white@2x.png",
+        "static/images/quiz_bg_white@2x.png"
+      ]
+      for (let img of imgs) {
+        let image = new Image()
+        image.src = img
+        image.onload = () => {
+          this.count++
+        }
+      }
+      this.loginShow = false
+    }
+  }
 }
 </script>
 
