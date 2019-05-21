@@ -180,10 +180,10 @@ export default {
     margin-right: 0.03rem;
 }
 .turntable_base{
-    width: 2.5rem;
-    height: 1rem;
+    width: 2.05rem;
+    height: 0.65rem;
     position: relative;
-    top: -0.38rem;
+    top: -0.25rem;
 }
 .button{
     width: 1.8rem;
