@@ -8,7 +8,7 @@
         <li>Ikuti kuis hariannya dan kamu yang menjawab kuis dengan benar akan berkesempatan dapetin THR dari Caping setiap harinya.</li>
         <li>Cara lengkapnya, silahkan baca syarat & ketentuan ya!</li>
       </ul>
-      <div class="button" @click="close">Ikuti Quiz</div>
+      <div class="button butt" @click="close">Ikuti Quiz</div>
     </div>
   </div>
 </template>

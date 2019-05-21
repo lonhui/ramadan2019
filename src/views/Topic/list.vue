@@ -11,7 +11,7 @@
         <div class="itemHeader">{{item.title}}</div>
         <div class="content">
           <div class="topic">{{item.topic}}</div>
-          <div class="button" @click="goto(item)">{{item.type === 2 ? "Jawaban Trivia" : "Ikutan"}}</div>
+          <div class="button butt" @click="goto(item)">{{item.type === 2 ? "Jawaban Trivia" : "Ikutan"}}</div>
         </div>
       </div>
     </div>

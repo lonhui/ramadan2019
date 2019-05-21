@@ -20,7 +20,7 @@
                 Kamu dapat THR pulsa Rp <span style="color:red">{{prize}}</span>. Isi nomor hp mu di bawah ini dengan benar
             </p>
             <input type="number"  placeholder="08xxxxxxxxxx" v-if="type !== 1">
-            <div class="button" @click="close">Kirim</div>
+            <div class="button butt" @click="close">Kirim</div>
         </div>
         <img class="header" src="static/images/word_selamat@2x.png" alt="">
     </div>

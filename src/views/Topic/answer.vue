@@ -5,7 +5,7 @@
         <div class="box">
             <p>{{text}}</p>
         </div>
-        <div class="button" @click="goTo">Lanjut</div>
+        <div class="button butt" @click="goTo">Lanjut</div>
     </div>
 </template>
 

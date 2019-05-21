@@ -2,7 +2,7 @@
     <div id="errorDialog" @touchmove.prevent>
         <div class="box">
             <p class="errorText">{{text}}</p>
-            <div class="button" @click="close">Lanjut</div>
+            <div class="button butt" @click="close">Lanjut</div>
         </div>
     </div>
 </template>

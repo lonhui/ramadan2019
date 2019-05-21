@@ -1,9 +1,9 @@
 <template>
   <div id="home">
     <div class="butBox">
-      <div class="button" @click="goToList">Ikuti Quiz</div>
-      <div class="button cara" @click="howFollowupShow = true">Cara Ikutan</div>
-      <div class="syarat" @click="goToRule">Syarat dan Ketentuan</div>
+      <div class="button butt" @click="goToList">Ikuti Quiz</div>
+      <div class="button cara butt" @click="howFollowupShow = true">Cara Ikutan</div>
+      <div class="syarat butt" @click="goToRule">Syarat dan Ketentuan</div>
     </div>
     <transition name="bounce">
       <v-howFollowup v-if="howFollowupShow" @on-close="close_howFollowupShow"></v-howFollowup>

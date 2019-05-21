@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <login :count = count v-if="loginShow"></login>
-    <router-view/>
+    <transition name="fade">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -119,5 +121,17 @@ border-spacing: 0;
 hr {
     border: none;
     height: 1px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.butt:active{
+  opacity:0.4;
+  transform: translateY(4px);
 }
 </style>

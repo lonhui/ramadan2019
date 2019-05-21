@@ -13,7 +13,7 @@
         :class="{'optionList':optionList[0].value.length<20,'optionList2':optionList[0].value.length>20}"
       >
         <div
-          class="option"
+          class="option butt"
           v-for="(item,index) in optionList"
           :key="item.id"
           @click="select(item,index)"
