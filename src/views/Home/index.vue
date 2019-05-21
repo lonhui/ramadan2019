@@ -106,7 +106,7 @@ export default {
   font-size: 0.1rem;
   border-radius: 0.12rem;
   background-color: #e7e7e7;
-  margin: 0.25rem auto 0;
+  margin: 0.1rem auto 0;
   display: flex;
   align-items: center;
   justify-content: center;
