@@ -86,6 +86,9 @@ export default {
       ]
     };
   },
+  created(){
+    console.log("获取列表数据请求！！！")
+  },
   methods:{
      goto(item){
         switch(item.type){

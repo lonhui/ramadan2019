@@ -32,6 +32,11 @@ export default new Router({
       path: '/problem',
       name: "Problem",
       component: () => import("@/views/Topic/problem")
+    },
+    {
+      path: '/turntable',
+      name: "Turntable",
+      component: () => import("@/views/Turntable/index")
     }
   ]
 })

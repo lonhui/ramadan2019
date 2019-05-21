@@ -5,7 +5,7 @@
         <div class="box">
             <p>{{text}}</p>
         </div>
-        <div class="button">Lanjut</div>
+        <div class="button" @click="goTo">Lanjut</div>
     </div>
 </template>
 
@@ -14,6 +14,19 @@ export default {
     data(){
         return{
             text:'Dasar Sunnah sarapan sebelum Shalat Idul Fitri dari hadits berikut: “Rasulullah tidak berangkat pada Idul Fitri hingga beliau memakan beberapa kurma." (HR. Bukhari)'
+        }
+    },
+    created(){
+        console.log("答案是否正确："+this.$router.currentRoute.params.answerResult)
+        console.log("获取答案请求！！！")
+    },
+    methods:{
+        goTo(){
+            if(this.$router.currentRoute.params.answerResult){
+                this.$router.push("/turntable");
+            }else{
+                this.$router.push("/list");
+            }
         }
     }
 }
