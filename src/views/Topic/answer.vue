@@ -13,17 +13,20 @@
 export default {
     data(){
         return{
-            text:'Dasar Sunnah sarapan sebelum Shalat Idul Fitri dari hadits berikut: “Rasulullah tidak berangkat pada Idul Fitri hingga beliau memakan beberapa kurma." (HR. Bukhari)'
+            text:''
         }
     },
     created(){
-        document.title = 'QUIZ 01';
-        console.log("答案是否正确："+this.$router.currentRoute.params.answerResult)
-        console.log("获取答案请求！！！")
+        if(this.$router.currentRoute.params.data){
+            document.title = this.$router.currentRoute.params.data.num
+            this.text = this.$router.currentRoute.params.data.corretComment
+        }else{
+            this.$router.push("/list");
+        }
     },
     methods:{
         goTo(){
-            if(this.$router.currentRoute.params.answerResult){
+            if(this.$router.currentRoute.params.data.corret){
                 this.$router.push("/turntable");
             }else{
                 this.$router.push("/list");

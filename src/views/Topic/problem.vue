@@ -3,8 +3,8 @@
     <!-- 答题页面 -->
     <div class="problem_blac">
       <div class="problem">
-        <div class="title">QUIZ 09</div>
-        <div class="content">Nabi Muhammadm SAW lahir di kota ?</div>
+        <div class="title">{{title}}</div>
+        <div class="content">{{topic}}</div>
       </div>
     </div>
     <div class="optionBox">
@@ -44,6 +44,8 @@ export default {
     return {
       sucDialogShow: false,
       errDialogShow: false,
+      title:'',//标题
+      topic:'',//题目
       answerResult:null,//答题结果，ture为答题正确，false为答题错误
       optionList: [
         {
@@ -66,38 +68,48 @@ export default {
     errorDialog
   },
   created() {
-    document.title = 'QUIZ 02';
-    console.log("获取题目请求！！！");
+    console.log(this.$router.currentRoute.params.data)
+    if(this.$router.currentRoute.params.data){
+      let item = this.$router.currentRoute.params.data
+      let title = item.num
+      document.title = title
+      this.title = title
+      this.topic = item.title
+      this.optionList[0].value = item.text1
+      this.optionList[1].value = item.text2
+    }else{
+      this.$router.push("/list");
+    }
   },
   methods: {
     closeDialog() {
       this.sucDialogShow = false;
       this.errDialogShow = false;
-      this.$router.push({name:'Answer',params:{answerResult:this.answerResult}})
+      this.$router.push({name:'Answer',params:{data:this.$router.currentRoute.params.data}})
     },
     select(item, index) {
-      console.log("验证答案请求！！！");
-      // let data = {
-      //   uid:getCookie("uid"),
-      //   problemId:"problemId",
-      //   chooseNum:"chooseNum"
-      // }
-      // verifyAnswer(data).then( res =>{
-
-      // }).catch( error => {
-
-      // })
-
-      this.optionList[index].selectStatus = true;
-      //随机获取0-1的整数，0为错误1为失败，用于模拟答题后视图展示状态   
-      let a = Math.round(Math.random());
-      if(a === 0){
-          this.answerResult = false;
-          this.errDialogShow = true;
-      }else{
-          this.answerResult = true;
-          this.sucDialogShow = true;
+      let data = {
+        uid:getCookie("uid"),
+        problemId:this.$router.currentRoute.params.data.id,
+        chooseNum:item.id
       }
+      verifyAnswer(data).then( res =>{
+        console.log(res)
+        if(res.code === 0){
+          this.optionList[index].selectStatus = true;
+          this.$router.currentRoute.params.data.corret = res.data.corret
+          this.$router.currentRoute.params.data.corretComment = res.data.corretComment
+          if(res.data.corret){
+            this.answerResult = true;
+            this.sucDialogShow = true;
+          }else{
+            this.answerResult = false;
+            this.errDialogShow = true;
+          }
+        }
+      }).catch( error => {
+
+      })
     }
   }
 };
@@ -205,7 +217,7 @@ export default {
   position: relative;
 }
 .mask {
-  width: 1.2rem;
+  width: 100%;
   height: 1.1rem;
   border-radius: 0.06rem;
   position: absolute;

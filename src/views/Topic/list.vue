@@ -4,14 +4,22 @@
     <div class="listBox">
       <!-- 1当前，2过去，3未来 -->
       <div
-        :class="{'item':true,'itemColor1':item.type === 1,'itemColor2':item.type === 2,'itemColor3':item.type === 3}"
-        v-for="item in list"
+        :class="{
+            'item':true,
+            'itemColor1':item.canSHowProbelm === 1 && !item.hasChoose,
+            'itemColor2':item.canSHowProbelm === 1 && item.hasChoose,
+            'itemColor3':item.canSHowProbelm === 0
+            }"
+        v-for="(item,index) in list"
         :key="item.id"
       >
-        <div class="itemHeader">{{item.title}}</div>
+        <div class="itemHeader">{{item.num}}</div>
         <div class="content">
-          <div class="topic">{{item.topic}}</div>
-          <div class="button butt" @click="goto(item)">{{item.type === 2 ? "Jawaban Trivia" : "Ikutan"}}</div>
+          <div class="topic">{{item.dec}}</div>
+          <div
+            class="button butt"
+            @click="goto(item,index)"
+          >{{item.hasChoose ? "Jawaban Trivia" : "Ikutan"}}</div>
         </div>
       </div>
     </div>
@@ -19,99 +27,46 @@
 </template>
 
 <script>
-import {questionsList} from "@/api/index"
+import { questionsList } from "@/api/index";
 
 export default {
   data() {
     return {
-      list: [
-        {
-          id: 1,
-          title: "QUIZ 01",
-          topic: "xxxxxxx",
-          type: 2
-        },
-        {
-          id: 2,
-          title: "QUIZ 02",
-          topic: "xxxxxxx",
-          type: 2
-        },
-        {
-          id: 3,
-          title: "QUIZ 03",
-          topic: "xxxxxxx",
-          type: 1
-        },
-        {
-          id: 4,
-          title: "QUIZ 04",
-          topic: "xxxxxxx",
-          type: 3
-        },
-        {
-          id: 5,
-          title: "QUIZ 05",
-          topic: "xxxxxxx",
-          type: 3
-        },
-        {
-          id: 6,
-          title: "QUIZ 06",
-          topic: "xxxxxxx",
-          type: 3
-        },
-        {
-          id: 7,
-          title: "QUIZ 07",
-          topic: "xxxxxxx",
-          type: 3
-        },
-        {
-          id: 8,
-          title: "QUIZ 08",
-          topic: "xxxxxxx",
-          type: 3
-        },
-        {
-          id: 9,
-          title: "QUIZ 09",
-          topic: "xxxxxxx",
-          type: 3
-        },
-        {
-          id: 10,
-          title: "QUIZ 10",
-          topic: "xxxxxxx",
-          type: 3
-        }
-      ]
+      list: []
     };
   },
-  created(){
-    console.log("获取列表数据请求！！！")
-    this.getList()
+  created() {
+    this.getList();
   },
-  methods:{
-      getList(){
-          questionsList().then( res => {
-              console.log(res)
-          }).catch( error => {
-
-          })
-      },
-     goto(item){
-        switch(item.type){
-          case 1:// 当前
-            this.$router.push('/problem')
-            break;
-          case 2:// 过去
-            this.$router.push('/answer')
-            break;
-          case 3:// 未来
-            break;
+  methods: {
+    // 获取列表数据
+    getList() {
+      questionsList()
+        .then(res => {
+          if (res.code === 0) {
+            let list = res.data.problemInfos;
+            list.forEach((item, index, arr) => {
+              item.dec =
+                item.title.split(" ")[0] + " " + item.title.split(" ")[1];
+              item.num = "QUIZ " + (index < 9 ? "0" + (index + 1) : index + 1);
+            });
+            this.list = list;
+            console.log(list);
+          }
+        })
+        .catch(error => {});
+    },
+    // 验证答题状态，跳转
+    goto(item, index) {
+      item.serialNum = index;
+      if (item.canSHowProbelm === 1) {
+        if (item.hasChoose) {
+          this.$router.push({ name: "Answer", params: { data: item } });
+        } else {
+          this.$router.push({ name: "Problem", params: { data: item } });
         }
-     }
+      }
+    }
   }
 };
 </script>
@@ -123,7 +78,7 @@ export default {
   background: url("../../../static/images/capingvcr_thrcaping_bgpanjang@2x.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  font-family:OpenSans;
+  font-family: OpenSans;
 }
 .listBox {
   padding: 0.17rem;
@@ -135,9 +90,9 @@ export default {
   border-radius: 0.05rem;
   background-color: #fff;
   margin-bottom: 0.1rem;
-  -moz-box-shadow:2px 2px 3px #333333; 
-  -webkit-box-shadow:2px 2px 3px #333333; 
-  box-shadow:2px 2px 3px #333333;
+  -moz-box-shadow: 2px 2px 3px #333333;
+  -webkit-box-shadow: 2px 2px 3px #333333;
+  box-shadow: 2px 2px 3px #333333;
 }
 .item .itemHeader {
   height: 50%;

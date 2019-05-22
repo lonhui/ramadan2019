@@ -41,9 +41,11 @@ export default {
       this.howFollowupShow = false;
       this.goToList();
     },
+    // 跳转到条约页
     goToRule() {
       this.$router.push("/rule");
     },
+    // 验证uid & did,跳转到列表页
     goToList() {
       if(!getCookie("uid") || !getCookie("did")){
         this.errorType = 1 
@@ -52,6 +54,7 @@ export default {
         this.$router.push("/list");
       }
     },
+    //获取uid & did
     getUidAndDid(){
         const url = window.location.href
         let uid = url.match(/[^a-zA-Z0-9]u{1,1}=([0-9]+)/)
