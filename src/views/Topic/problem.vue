@@ -36,6 +36,8 @@
 <script>
 import successDialog from "./components/successDialog";
 import errorDialog from "./components/errorDialog";
+import {verifyAnswer} from "@/api/index"
+import {getCookie} from "@/util/Cookie"
 
 export default {
   data() {
@@ -75,6 +77,17 @@ export default {
     },
     select(item, index) {
       console.log("验证答案请求！！！");
+      // let data = {
+      //   uid:getCookie("uid"),
+      //   problemId:"problemId",
+      //   chooseNum:"chooseNum"
+      // }
+      // verifyAnswer(data).then( res =>{
+
+      // }).catch( error => {
+
+      // })
+
       this.optionList[index].selectStatus = true;
       //随机获取0-1的整数，0为错误1为失败，用于模拟答题后视图展示状态   
       let a = Math.round(Math.random());

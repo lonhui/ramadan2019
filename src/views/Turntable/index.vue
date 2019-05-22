@@ -104,7 +104,7 @@ export default {
         prozeDialog
     },
     created(){
-       
+
     },
     methods:{
         closeDailog(){

@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import {questionsList} from "@/api/index"
+
 export default {
   data() {
     return {
@@ -88,8 +90,16 @@ export default {
   },
   created(){
     console.log("获取列表数据请求！！！")
+    //this.getList()
   },
   methods:{
+      getList(){
+          questionsList().then( res => {
+              console.log(res)
+          }).catch( error => {
+
+          })
+      },
      goto(item){
         switch(item.type){
           case 1:// 当前

@@ -1,16 +1,20 @@
 import request from "@/util/request"
 
-export function apiPost(param) {
+
+
+// 问题列表
+export function questionsList() {
     return request({
-        url: '/sys/role/info',
-        method: 'get',
-        param
+        url: '/choose/getProblems',
+        method: 'post',
+        headers:{"Content-Type":"application/json"}
     })
 }
 
-export function apiGet(data) {
+// 验证答案
+export function verifyAnswer(data) {
     return request({
-        url: '/sys/role/info',
+        url: '/choose/doChoose',
         method: 'post',
         data
     })

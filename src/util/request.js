@@ -8,10 +8,11 @@ axios请求封装
  */
 
 import axios from 'axios'
+import {getCookie} from './Cookie'
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: 'https://api.hamee.id',//域名或IP
+  baseURL: process.env.BASE_API,//域名或IP
   timeout: 15000 // 请求超时时间
 })
 
@@ -20,9 +21,10 @@ axios.defaults.withCredentials = true
 // request拦截器
 service.interceptors.request.use(config => {
   // 设置请求头
-  // if(config.url !== "/user/getKey"){
-  //   config.headers['decry-content'] = encryption()
-  // }
+  
+  config.headers['X-caping-uid'] = getCookie('uid')
+  config.headers['X-caping-device-id'] = getCookie('did')
+
   return config
 }, error => {
   console.error(error) 
