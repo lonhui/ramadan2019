@@ -1,5 +1,5 @@
 <template>
-    <div class="loading">
+    <div :class="{'loading':count,'loading-2':!count}">
         <div id="Loading">
             <div class="loader-inner ball-beat">
                 <div></div>
@@ -7,8 +7,9 @@
                 <div></div>
                 <div></div>
                 <div></div>
+                <div></div>
             </div>
-        <div class="number">
+            <div class="number" v-if="count">
                 {{(count/20*100).toFixed(0)}}%
             </div>
         </div>
@@ -31,6 +32,15 @@ export default {
     height: 100%;
     background-color: #548A1B;
 }
+.loading-2{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(7, 17, 27, 0.8);
+}
 .number{
     color: #fff;
     font-size: 40px;
@@ -41,7 +51,6 @@ export default {
 #Loading {
     top:50%;
     left:50%;
-    background-color: #548A1B;
     position: absolute;
     -webkit-transform: translateY(-50%)  translateX(-50%);
     transform: translateY(-50%)  translateX(-50%);
