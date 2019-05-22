@@ -43,7 +43,11 @@ export default {};
     padding: 0.1rem;
     background-color: #f6f6f6;
     font-family:OpenSans;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
 }
+#rule::-webkit-scrollbar { width: 0 !important }
 header{
     height: 0.5rem;
     color: #fff;
