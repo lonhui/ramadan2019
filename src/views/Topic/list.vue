@@ -90,7 +90,7 @@ export default {
   },
   created(){
     console.log("获取列表数据请求！！！")
-    //this.getList()
+    this.getList()
   },
   methods:{
       getList(){

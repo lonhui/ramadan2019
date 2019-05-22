@@ -1,7 +1,4 @@
 import request from "@/util/request"
-
-
-
 // 问题列表
 export function questionsList() {
     return request({
