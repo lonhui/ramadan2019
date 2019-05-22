@@ -7,19 +7,22 @@
             <img class="icon" v-if="type === 2" src="static/images/icon_gopay@2x.png" alt="">
             <!-- OVO icon -->
             <img class="icon" v-if="type === 3" src="static/images/icon_ovo@2x.png" alt="">
-            <!-- 获得积分 -->
-            <p class="successText" v-if="type === 1">
-                Selamat kamu dapat THR Poin Caping senilai <span style="color:red">{{prize}}</span>.
-            </p>
-            <!-- 充值支付GOPAY -->
-            <p class="successText" v-if="type === 2">
-                Kamu dapat THR saldo Go-Pay Rp <span style="color:red">{{prize}}</span>. Isi nomor hp mu di bawah ini dengan benar
-            </p>
-            <!-- 充值支付OVO -->
-            <p class="successText" v-if="type === 3">
-                Kamu dapat THR pulsa Rp <span style="color:red">{{prize}}</span>. Isi nomor hp mu di bawah ini dengan benar
-            </p>
-            <input type="number"  placeholder="08xxxxxxxxxx" v-if="type !== 1">
+            <div class="content">
+                <!-- 获得积分 -->
+                <p class="successText" v-if="type === 1">
+                    Selamat kamu dapat THR Poin Caping senilai <span style="color:red">{{prize}}</span>.
+                </p>
+                <!-- 充值支付GOPAY -->
+                <p class="successText" v-if="type === 2">
+                    Kamu dapat THR saldo Go-Pay Rp <span style="color:red">{{prize}}</span>. Isi nomor hp mu di bawah ini dengan benar
+                </p>
+                <!-- 充值支付OVO -->
+                <p class="successText" v-if="type === 3">
+                    Kamu dapat THR pulsa Rp <span style="color:red">{{prize}}</span>. Isi nomor hp mu di bawah ini dengan benar
+                </p>
+                <input type="number"  placeholder="08xxxxxxxxxx" v-if="type !== 1">`
+            </div>
+            
             <div class="button butt" @click="close">Kirim</div>
         </div>
         <img class="header" src="static/images/word_selamat@2x.png" alt="">
@@ -54,13 +57,15 @@ export default {
 }
 
 .box{
-    width: 2.75rem;
+    width: 2.35rem;
     height: 2.2rem;
     background: url('../../../../static/images/bg@2x.png'); 
     background-size: 100% 100%; 
     background-repeat: no-repeat; 
     margin: 1.56rem auto 0;
     font-family:OpenSans;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
     position: relative;
 }
 .header{
@@ -72,8 +77,13 @@ export default {
     width: 0.4rem;
     padding-top: 0.2rem;
 }
+.content{
+    height: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .successText{
-    width: 2.3rem;
     margin: 0 auto;
     text-align: center;
     font-size: 0.16rem;
