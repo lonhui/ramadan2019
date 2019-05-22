@@ -8,23 +8,30 @@
     <transition name="bounce">
       <v-howFollowup v-if="howFollowupShow" @on-close="close_howFollowupShow"></v-howFollowup>
     </transition>
+    <transition name="bounce">
+      <v-error :type="errorType" v-show="errorShow" @on-close="errorShow = false"></v-error>
+    </transition>
   </div>
 </template>
 
 <script>
-import howFollowup from "./components/HowFollowup";
+import howFollowup from "./components/HowFollowup"
 import {setCookie,getCookie} from "@/util/Cookie"
-import {apiPost} from "@/api/index"
+import error from "@/components/error"
+
 
 export default {
   data() {
     return {
+      errorShow:false,
       howFollowupShow: false,
-      user:{}
+      user:{},
+      errorType:1,
     };
   },
   components: {
     "v-howFollowup": howFollowup,
+    "v-error":error
   },
   created(){
     this.getUidAndDid()
@@ -38,8 +45,12 @@ export default {
       this.$router.push("/rule");
     },
     goToList() {
-      console.log("验证用户请求！！！")
-      this.$router.push("/list");
+      if(!getCookie("uid") || !getCookie("did")){
+        this.errorType = 1 
+        this.errorShow = true
+      }else{
+        this.$router.push("/list");
+      }
     },
     getUidAndDid(){
         const url = window.location.href
@@ -52,7 +63,10 @@ export default {
           if(getCookie("uid")){
             this.user.uid = getCookie("uid")
           }else{
-            console.log("未登陆！！！")
+            if(!this.errorShow){
+              this.errorType = 1
+              this.errorShow = true
+            }
           }
         }
         if(did && did.length >= 2){
@@ -62,7 +76,10 @@ export default {
           if(getCookie("did")){
             this.user.deviceId = getCookie("did")
           }else{
-            console.log("未登陆！！！")
+            if(!this.errorShow){
+              this.errorType = 1
+              this.errorShow = true
+            }
           }
         }
     },

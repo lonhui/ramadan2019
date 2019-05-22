@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <login :count = count v-if="loginShow"></login>
+    <loading :count = count v-if="loadingShow"></loading>
     <transition :name="transitionName">
       <keep-alive :include="keepAlive">
         <router-view class="Router" v-wechat-title="$route.meta.title"/>
@@ -10,20 +10,20 @@
 </template>
 
 <script>
-import login from "@/components/loginPage"
+import loading from "@/components/loading"
 
 export default {
   name: 'App',
   data(){
     return{
       count:0,
-      loginShow:true,
+      loadingShow:true,
       keepAlive: 'main-keep-alive',  //需要缓存的页面 例如首页
       transitionName: 'slide-right', //初始过渡动画方向
     }
   },
   components:{
-    login
+    loading
   },
   created(){
     this.preload()
@@ -60,7 +60,7 @@ export default {
           this.count++
         }
       }
-      this.loginShow = false
+      this.loadingShow = false
     }
   },
   watch: {
