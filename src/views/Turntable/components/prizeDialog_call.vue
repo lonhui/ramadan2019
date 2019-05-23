@@ -2,7 +2,7 @@
     <div id="prizeCallDialog" @touchmove.prevent>
         <div class="box">
             <p class="successText">
-                Kamu dapat THR pulsa Rp <span style="color:red">{{prize}}</span>. Isi nomor hp mu di bawah ini dengan benar.
+                Kamu dapat THR <span style="color:red">{{prizeName}}</span>. Isi nomor hp mu di bawah ini dengan benar.
             </p>
             <input type="number"  placeholder="08xxxxxxxxxx">
             <div class="button butt" @click="close">Kirim</div>
@@ -13,6 +13,7 @@
 <script>
 
 export default {
+    props:["prizeName"],
     data(){
         return{
             prize:"5000"

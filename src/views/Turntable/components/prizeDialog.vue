@@ -31,6 +31,7 @@
 
 <script>
 export default {
+    props:["prizeName"],
     data(){
         return{
             prize:"5000",

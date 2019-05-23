@@ -18,10 +18,10 @@
         <img class="turntable_base" src="static/images/Layer20.png" alt="">
         <img class="button butt" @click="lottery" src="static/images/but_ambilthr.png" alt="">
         <transition name="bounce">
-            <prizeDialogCall v-if="prizeCallShow" @on-close="closeDailog"></prizeDialogCall>
+            <prizeDialogCall :prizeName = "prizeName" v-if="prizeCallShow" @on-close="closeDailog"></prizeDialogCall>
         </transition>
         <transition name="bounce">
-            <prozeDialog v-if="prizeShow" @on-close="closeDailog"></prozeDialog>
+            <prozeDialog :prizeName = "prizeName" v-if="prizeShow" @on-close="closeDailog"></prozeDialog>
         </transition>
         <transition name="fade">
             <loading v-show="loadingShow"></loading>
@@ -46,7 +46,9 @@ export default {
             buttouStatus:true,
             prizeCallShow:false,
             prizeShow:false,
-            prizeList:[]
+            prizeList:[],
+            prizeName:""
+
         }
     },
     components:{
@@ -64,13 +66,13 @@ export default {
             this.$router.push("/list");
         },
         // 旋转
-        rotate(){
+        rotate(num){
             if(this.buttouStatus){
                 this.buttouStatus = false
                 var turntable = document.getElementById('prize-list')
                 turntable.style['transform'] = 'rotate(337.5deg)';
 
-                var num = Math.floor( Math.random() * 6 ) + 1//由服务器获得
+                //var num = Math.floor( Math.random() * 6 ) + 1//由服务器获得
                 console.log("奖品编号："+num)
 
                 var angle = 360 - ( num - 1 ) * 45 - 22.5//停下来的角度
@@ -121,7 +123,12 @@ export default {
             lottery().then(res => {
                 console.log(res)
                 if(res.code === 0){
-
+                    this.prizeName = res.data.prizeName
+                    this.prizeList.forEach((item,index)=>{
+                        if(item.id === res.data.prizeId){
+                            this.rotate(index+1)
+                        }
+                    })
                 }
             }).catch(error => {
 
