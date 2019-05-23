@@ -51,13 +51,13 @@ export default {
         {
           id: 1,
           key: "A",
-          value: "Madinah",
+          value: "",
           selectStatus: false
         },
         {
           id: 2,
           key: "B",
-          value: "Mekkah",
+          value: "",
           selectStatus: false
         }
       ]
@@ -140,6 +140,7 @@ export default {
   text-align: center;
   background-color: #fff;
   font-size: 0.14rem;
+  line-height: 0.22rem;
   border-radius: 0 0 0.05rem 0.05rem;
   -moz-box-shadow: 0.02rem 0.02rem 0.05rem #333333;
   -webkit-box-shadow: 0.02rem 0.02rem 0.05rem #333333;

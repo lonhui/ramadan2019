@@ -6,8 +6,8 @@
       <div
         :class="{
             'item':true,
-            'itemColor1':item.canSHowProbelm === 1 && !item.hasChoose,
-            'itemColor2':item.canSHowProbelm === 1 && item.hasChoose,
+            'itemColor1':item.canSHowProbelm === 1 && (!item.hasChoose || item.corretComment),
+            'itemColor2':item.canSHowProbelm === 1 && (item.hasChoose || item.corretComment),
             'itemColor3':item.canSHowProbelm === 0
             }"
         v-for="(item,index) in list"
@@ -19,7 +19,7 @@
           <div
             class="button butt"
             @click="goto(item,index)"
-          >{{item.hasChoose ? "Jawaban Trivia" : "Ikutan"}}</div>
+          >{{item.hasChoose || item.corretComment? "Jawaban Trivia" : "Ikutan"}}</div>
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@ export default {
     goto(item, index) {
       item.serialNum = index;
       if (item.canSHowProbelm === 1) {
-        if (item.hasChoose) {
+        if (item.hasChoose || item.corretComment) {
           this.$router.push({ name: "Answer", params: { data: item } });
         } else {
           this.$router.push({ name: "Problem", params: { data: item } });
