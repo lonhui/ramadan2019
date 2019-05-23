@@ -16,12 +16,15 @@
             <img class="turntable_border" src="static/images/bg_turntable.png" alt="">
         </div>
         <img class="turntable_base" src="static/images/Layer20.png" alt="">
-        <img class="button butt" @click="rotate" src="static/images/but_ambilthr.png" alt="">
+        <img class="button butt" @click="lottery" src="static/images/but_ambilthr.png" alt="">
         <transition name="bounce">
             <prizeDialogCall v-if="prizeCallShow" @on-close="closeDailog"></prizeDialogCall>
         </transition>
         <transition name="bounce">
             <prozeDialog v-if="prizeShow" @on-close="closeDailog"></prozeDialog>
+        </transition>
+        <transition name="fade">
+            <loading v-show="loadingShow"></loading>
         </transition>
     </div>
 </template>
@@ -33,80 +36,26 @@ import dianImg from "../../../static/images/icon_ovo@2x.png";
 import prizeDialogCall from "./components/prizeDialog_call"//话费奖品弹框
 import prozeDialog from "./components/prizeDialog"//其余奖品弹框
 import {getTurntableList,lottery} from "@/api/index"
+import loading from "@/components/loading"
 
 
 export default {
     data(){
         return{
+            loadingShow:false,
             buttouStatus:true,
             prizeCallShow:false,
             prizeShow:false,
-            prizeList:[
-                {
-                    id:1,
-                    type:1,
-                    name:"500",
-                    icon:coinImg,
-                    color:"#fff"
-                },
-                {
-                    id:2,
-                    type:1,
-                    name:"Rp 50K",
-                    icon:rpImg,
-                    color:"#000"
-                },
-                {
-                    id:3,
-                    type:1,
-                    name:"Pulsa Rp 10K",
-                    icon:null,
-                    color:"#fff"
-                },
-                {
-                    id:4,
-                    type:1,
-                    name:"200",
-                    icon:coinImg,
-                    color:"#000"
-                },
-                {
-                    id:5,
-                    type:1,
-                    name:"Rp 10K",
-                    icon:rpImg,
-                    color:"#fff"
-                },
-                {
-                    id:6,
-                    type:1,
-                    name:"Pulsa Rp 25K",
-                    icon:null,
-                    color:"#000"
-                },
-                {
-                    id:7,
-                    type:1,
-                    name:"Rp 20K",
-                    icon:dianImg,
-                    color:"#fff"
-                },
-                {
-                    id:8,
-                    type:1,
-                    name:"Pulsa Rp 5K",
-                    icon:null,
-                    color:"#000"
-                }
-            ]
+            prizeList:[]
         }
     },
     components:{
         prizeDialogCall,
-        prozeDialog
+        prozeDialog,
+        loading
     },
     created(){
-
+        this.getTurntableList()
     },
     methods:{
         closeDailog(){
@@ -147,13 +96,24 @@ export default {
         },
         //获取转盘奖品列表
         getTurntableList(){
+            this.loadingShow = true
             getTurntableList().then(res => {
-                console.log(res)
                 if(res.code === 0){
-
+                    res.data.list.forEach((item,index) => {
+                        if(item.remark.indexOf("积分") != -1){
+                            item.icon = coinImg
+                        }else if(item.remark.indexOf("Gopay") != -1){
+                            item.icon = rpImg
+                        }else if(item.remark.indexOf("Ovo") != -1){
+                            item.icon = dianImg
+                        }
+                    });
+                    this.prizeList = res.data.list
                 }
+                console.log(this.prizeList)
+                this.loadingShow = false
             }).catch(error =>{
-
+                this.loadingShow = false
             })
         },
         //抽奖
@@ -402,5 +362,12 @@ export default {
   100% {
     transform: scale(1);
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

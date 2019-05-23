@@ -18,19 +18,17 @@ export function verifyAnswer(data) {
 }
 
 //获取转盘奖品列表
-export function getTurntableList(data){
+export function getTurntableList(){
     return request({
-        url: "/aaa",
-        method: "post",
-        data
+        url: "/lottery/getLotterys",
+        method: "post"
     })
 }
 
 //抽奖
-export function lottery(data){
+export function lottery(){
     return request({
-        url: "/lottery",
-        method: "post",
-        data
+        url: "/lottery/doLottery",
+        method: "post"
     })
 }
