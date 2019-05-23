@@ -174,11 +174,18 @@ export default {
     top: 0;
     left: 0;
 }
+.prize-pic{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+}
 .prize-pic img{
     width: 0.15rem;
     height: 0.15rem;
     margin-right: 0.03rem;
 }
+
 .turntable_base{
     width: 2.05rem;
     height: 0.65rem;
@@ -208,7 +215,10 @@ export default {
     overflow: hidden;
     display: flex;
     flex-direction: row;
-    width: 0.7rem;
+    justify-items: center;
+    align-items: center;
+    width: 0.63rem;
+    font-size: 0.10rem;
     line-height: 0.15rem;
     text-align: left;
     position: absolute;
@@ -218,7 +228,7 @@ export default {
 }
 #prize-list .prize-item:first-child {
     top: 0.78rem;
-    left: 1.65rem;
+    left: 1.63rem;
     transform: rotate(290deg);
     transform-origin:0% 50%;
     color: #fff;
@@ -266,14 +276,14 @@ export default {
     color: #fff;
 }
 #prize-list .prize-item:nth-child(8) {
-    top: 0.81rem;
+    top: 0.75rem;
     left: 1.18rem;
     transform: rotate(605deg);
     transform-origin:0% 50%;
 }
 /* ------------------ */
 /* 旋转动画  2秒 1次 慢快慢*/
-/* 1000 */
+/* 1 */
 .turntable_1{
      -webkit-animation:circle_1 6s 1 ease
 }
@@ -281,7 +291,7 @@ export default {
     0%{ transform:rotate(0deg) }
     100%{ transform:rotate(2137.5deg) }
 }
-/* 50000 */
+/* 2 */
 .turntable_2{
      -webkit-animation:circle_2 6s 1 ease
 }
@@ -289,7 +299,7 @@ export default {
     0%{ transform:rotate(0deg) }
     100%{ transform:rotate(2092.5deg) }
 }
-/* 2000 */
+/* 3 */
 .turntable_3{
      -webkit-animation:circle_3 6s 1 ease
 }
@@ -297,7 +307,7 @@ export default {
     0%{ transform:rotate(0deg) }
     100%{ transform:rotate(2047.5deg) }
 }
-/* 500 */
+/* 4 */
 .turntable_4{
      -webkit-animation:circle_4 6s 1 ease
 }
@@ -305,7 +315,7 @@ export default {
     0%{ transform:rotate(0deg) }
     100%{ transform:rotate(2002.5deg) }
 }
-/* 2500 */
+/* 5 */
 .turntable_5{
      -webkit-animation:circle_5 6s 1 ease
 }
@@ -313,7 +323,7 @@ export default {
     0%{ transform:rotate(0deg) }
     100%{ transform:rotate(1957.5deg) }
 }
-/* 1000 */
+/* 6 */
 .turntable_6{
      -webkit-animation:circle_6 6s 1 ease
 }
@@ -321,7 +331,7 @@ export default {
     0%{ transform:rotate(0deg) }
     100%{ transform:rotate(1912.5deg) }
 }
-/* 1000 */
+/* 7 */
 .turntable_7{
      -webkit-animation:circle_7 6s 1 ease
 }
@@ -329,7 +339,7 @@ export default {
     0%{ transform:rotate(0deg) }
     100%{ transform:rotate(1867.5deg) }
 }
-/* 1000 */
+/* 8 */
 .turntable_8{
      -webkit-animation:circle_8 6s 1 ease
 }
