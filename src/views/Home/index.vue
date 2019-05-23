@@ -58,7 +58,7 @@ export default {
     getUidAndDid(){
         const url = window.location.href
         let uid = url.match(/[^a-zA-Z0-9]u{1,1}=([0-9]+)/)
-        let did = url.match(/[^a-zA-Z0-9]c{1,1}=([a-z0-9]+)/)
+        let did = url.match(/[^a-zA-Z0-9]c{1,1}=([a-z0-9A-Z]+)/)
         if(uid && uid.length >= 2){
           this.user.uid = uid[1]
           setCookie("uid",uid[1],1)
@@ -115,6 +115,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  -moz-box-shadow:0.02rem 0.02rem 0.05rem #333333; 
+  -webkit-box-shadow:0.02rem 0.02rem 0.05rem #333333; 
+  box-shadow:0.02rem 0.02rem 0.05rem #333333;
 }
 .cara {
   margin-top: 0.1rem;
@@ -130,6 +133,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  -moz-box-shadow:0.02rem 0.02rem 0.05rem #333333; 
+  -webkit-box-shadow:0.02rem 0.02rem 0.05rem #333333; 
+  box-shadow:0.02rem 0.02rem 0.05rem #333333;
 }
 /* 弹窗过渡动画 */
 .bounce-enter-active {

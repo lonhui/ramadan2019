@@ -32,11 +32,13 @@ import rpImg from "../../../static/images/icon_gopay@2x.png";
 import dianImg from "../../../static/images/icon_ovo@2x.png";
 import prizeDialogCall from "./components/prizeDialog_call"//话费奖品弹框
 import prozeDialog from "./components/prizeDialog"//其余奖品弹框
+import {getTurntableList,lottery} from "@/api/index"
 
 
 export default {
     data(){
         return{
+            buttouStatus:true,
             prizeCallShow:false,
             prizeShow:false,
             prizeList:[
@@ -110,30 +112,61 @@ export default {
         closeDailog(){
             this.prizeCallShow = false
             this.prizeShow = false
+            this.$router.push("/list");
         },
         // 旋转
         rotate(){
-            var turntable = document.getElementById('prize-list')
-            turntable.style['transform'] = 'rotate(337.5deg)';
+            if(this.buttouStatus){
+                this.buttouStatus = false
+                var turntable = document.getElementById('prize-list')
+                turntable.style['transform'] = 'rotate(337.5deg)';
 
-            var num = Math.floor( Math.random() * 6 ) + 1//由服务器获得
-            console.log("奖品编号："+num)
+                var num = Math.floor( Math.random() * 6 ) + 1//由服务器获得
+                console.log("奖品编号："+num)
 
-            var angle = 360 - ( num - 1 ) * 45 - 22.5//停下来的角度
-            turntable.className ='turntable_'+num
-            console.log("停止角度："+angle)
-            setTimeout( ()=>{
-                turntable.style['transform'] = "rotate(" + angle + "deg)";
-                turntable.className ='turntabled';
-            },5900)
-            setTimeout(()=>{
-                if(num % 2 === 0){
-                    this.prizeCallShow = true
-                }else{
-                    this.prizeShow = true
-                }
-            },6000)
+                var angle = 360 - ( num - 1 ) * 45 - 22.5//停下来的角度
+                turntable.className ='turntable_'+num
+                console.log("停止角度："+angle)
+                setTimeout( ()=>{
+                    turntable.style['transform'] = "rotate(" + angle + "deg)";
+                    turntable.className ='turntabled';
+                },5900)
+                setTimeout(()=>{
+                    if(num % 2 === 0){
+                        this.prizeCallShow = true
+                        this.buttouStatus = true
+                    }else{
+                        this.prizeShow = true
+                        this.buttouStatus = true
+                    }
+                },6000)
+            }else{
+                console.log("转盘停止后可点击！！！")
+            }
+            
         },
+        //获取转盘奖品列表
+        getTurntableList(){
+            getTurntableList().then(res => {
+                console.log(res)
+                if(res.code === 0){
+
+                }
+            }).catch(error =>{
+
+            })
+        },
+        //抽奖
+        lottery(){
+            lottery().then(res => {
+                console.log(res)
+                if(res.code === 0){
+
+                }
+            }).catch(error => {
+
+            })
+        }
     }
 }
 </script>
@@ -197,6 +230,10 @@ export default {
     height: 0.6rem;
     position: relative;
     top: -0.2rem;
+    border-radius: 0.08rem;
+    -moz-box-shadow:0.05rem 0.05rem 0.08rem #333333; 
+    -webkit-box-shadow:0.05rem 0.05rem 0.08rem #333333; 
+    box-shadow:0.05rem 0.05rem 0.08rem #333333; 
 }
 
 /* ---------------------- */

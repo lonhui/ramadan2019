@@ -57,6 +57,9 @@ export default {
     border-radius: 0.08rem;
     background-color: #fff;
     border: #d8a02d 0.04rem solid;
+    -moz-box-shadow:0.02rem 0.02rem 0.05rem #333333; 
+    -webkit-box-shadow:0.02rem 0.02rem 0.05rem #333333; 
+    box-shadow:0.02rem 0.02rem 0.05rem #333333;
 }
 .box p{
     font-size: 0.14rem;
@@ -74,5 +77,8 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    -moz-box-shadow:0.02rem 0.02rem 0.05rem #333333;
+    -webkit-box-shadow:0.02rem 0.02rem 0.05rem #333333; 
+    box-shadow:0.02rem 0.02rem 0.05rem #333333;
 }
 </style>

@@ -16,3 +16,21 @@ export function verifyAnswer(data) {
         data
     })
 }
+
+//获取转盘奖品列表
+export function getTurntableList(data){
+    return request({
+        url: "/aaa",
+        method: "post",
+        data
+    })
+}
+
+//抽奖
+export function lottery(data){
+    return request({
+        url: "/lottery",
+        method: "post",
+        data
+    })
+}

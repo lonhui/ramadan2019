@@ -1,5 +1,5 @@
 <template>
-    <div :class="{'loading':count,'loading-2':!count}">
+    <div :class="{'loading':count,'loading-2':!count}" @touchmove.prevent>
         <div id="Loading">
             <div class="loader-inner ball-beat">
                 <div></div>
@@ -9,8 +9,8 @@
                 <div></div>
                 <div></div>
             </div>
-            <div class="number" v-if="count">
-                {{(count/20*100).toFixed(0)}}%
+            <div class="number">
+                {{count? (count/20*100).toFixed(0)+"%" :"Loading"}}
             </div>
         </div>
     </div>
@@ -28,33 +28,40 @@ export default {
     z-index: 100;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 3.6rem;
+    height: 6.4rem;
     background-color: #548A1B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .loading-2{
     position: fixed;
     z-index: 100;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 3.6rem;
+    height: 6.4rem;
     background-color: rgba(7, 17, 27, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .number{
     color: #fff;
-    font-size: 40px;
+    font-size: 0.2rem;
     font-weight: bold;
-    line-height: 200px;
+    line-height: 1.5rem;
     text-align:center;
 } 
 #Loading {
-    top:50%;
-    left:50%;
-    position: absolute;
-    -webkit-transform: translateY(-50%)  translateX(-50%);
-    transform: translateY(-50%)  translateX(-50%);
-    z-index:100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
 }
 @-webkit-keyframes ball-beat {
     50% {

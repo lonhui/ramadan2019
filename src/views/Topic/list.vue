@@ -23,17 +23,25 @@
         </div>
       </div>
     </div>
+    <transition name="fade">
+      <loading v-show="loadingShow"></loading>
+    </transition>
   </div>
 </template>
 
 <script>
 import { questionsList } from "@/api/index";
+import loading from "@/components/loading"
 
 export default {
   data() {
     return {
+      loadingShow:false,
       list: []
     };
+  },
+  components:{
+    loading
   },
   created() {
     this.getList();
@@ -41,6 +49,7 @@ export default {
   methods: {
     // 获取列表数据
     getList() {
+      this.loadingShow = true
       questionsList()
         .then(res => {
           if (res.code === 0) {
@@ -53,8 +62,11 @@ export default {
             this.list = list;
             console.log(list);
           }
+          this.loadingShow = false
         })
-        .catch(error => {});
+        .catch(error => {
+          this.loadingShow = false
+        });
     },
     // 验证答题状态，跳转
     goto(item, index) {
@@ -121,6 +133,9 @@ export default {
   font-size: 0.1rem;
   border-radius: 0.05rem;
   align-self: center;
+  -moz-box-shadow:0.02rem 0.02rem 0.03rem #333333; 
+  -webkit-box-shadow:0.02rem 0.02rem 0.03rem #333333; 
+  box-shadow:0.02rem 0.02rem 0.03rem #333333;
 }
 /* item不同状态样式 */
 /* 样式1 正在进行*/
@@ -164,5 +179,12 @@ export default {
 .itemColor3 .button {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
