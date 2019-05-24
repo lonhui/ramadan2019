@@ -2,6 +2,7 @@
     <div id="errorDialog" @touchmove.prevent>
         <div class="box">
             <p class="errorText">{{text}}</p>
+            <div class="share butt" @click="share">Share</div>
             <div class="button butt" @click="close">Lanjut</div>
         </div>
     </div>
@@ -15,10 +16,22 @@ export default {
             text:"Jawaban kamu salah. Kamu belum bisa dapetin THR hari ini."
         }
     },
+    created(){
+        window.shareSucceed = this.shareSucceed;
+    },
     methods:{
         close(){
             this.$emit("on-close");
-        }
+        },
+        share(){
+            let content = ''
+            content='Aku baru aja ikutan kuis THR di Caping. Kamu ikutan juga yuk! Ada hadiah berlimpah yang bisa kamu menangin untuk Lebaran nanti! [link google playstore]'
+            let title = content
+            let pic = null
+            var url ='https://app.appsflyer.com/com.engloryintertech.caping?pid=Download'
+            CapingJs.share(title,content,url,pic)
+        },
+        shareSucceed(){this.close()},
     }
 }
 </script>
@@ -44,7 +57,7 @@ export default {
 }
 .box{
     width: 2.75rem;
-    height: 2.02rem;
+    height: 2.32rem;
     background: url('../../../../static/images/popups_bg_white@2x.png'); 
     background-size: 100% 100%; 
     background-repeat: no-repeat; 
@@ -63,7 +76,19 @@ export default {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top:1.80rem;
+    top:2.08rem;
     left: 0.7rem;
+}
+.share{
+    width: 1.28rem;
+    margin: 0.15rem auto 0;
+    height: 0.27rem;
+    color: #82c345;
+    border:#82c345 0.02rem solid;
+    font-size: 0.16rem;
+    border-radius: 0.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>
