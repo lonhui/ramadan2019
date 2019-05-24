@@ -75,11 +75,9 @@ export default {
                 turntable.style['transform'] = 'rotate(337.5deg)';
 
                 //var num = Math.floor( Math.random() * 6 ) + 1//由服务器获得
-                console.log("奖品编号："+num)
 
                 var angle = 360 - ( num - 1 ) * 45 - 22.5//停下来的角度
                 turntable.className ='turntable_'+num
-                console.log("停止角度："+angle)
                 setTimeout( ()=>{
                     turntable.style['transform'] = "rotate(" + angle + "deg)";
                     turntable.className ='turntabled';
@@ -131,6 +129,20 @@ export default {
                     this.prizeName = res.data.prizeName
                     this.prizeType = res.data.type
                     this.prizeId = res.data.prizeId
+                    switch(res.data.type){
+                        case 3:
+                            console.log("积分")
+                            break;
+                        case 4:
+                            console.log("话费")
+                            break;
+                        case 5:
+                            console.log("Go-Pay")
+                            break;
+                        case 6:
+                            console.log("Ovo")
+                            break;
+                    }
                     this.prizeList.forEach((item,index)=>{
                         if(item.id === res.data.prizeId){
                             this.rotate(index+1)

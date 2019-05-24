@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import {dataRecord} from "@/api/index"
 
 export default {
     data(){
@@ -31,7 +32,10 @@ export default {
             var url ='https://app.appsflyer.com/com.engloryintertech.caping?pid=Download'
             CapingJs.share(title,content,url,pic)
         },
-        shareSucceed(){this.close()},
+        shareSucceed(){
+            dataRecord({type:1})
+            this.close()
+        },
     }
 }
 </script>

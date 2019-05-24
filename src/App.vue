@@ -11,6 +11,7 @@
 
 <script>
 import loading from "@/components/loading";
+import {dataRecord} from "@/api/index"
 
 export default {
   name: "App",
@@ -26,6 +27,7 @@ export default {
     loading
   },
   created() {
+    dataRecord({type:2})
     this.preload();
   },
   methods: {

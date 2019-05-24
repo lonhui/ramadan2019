@@ -42,3 +42,14 @@ export function setRechargeInfo(data) {
         data
     })
 }
+
+// 打开活动||分享数据统计
+//type :    1-分享    2-活动首页点击
+export function dataRecord(data) {
+    return request({
+        url: '/choose/doClickNum',
+        method: 'post',
+        headers:{"Content-Type":"application/json"},
+        data
+    })
+}
