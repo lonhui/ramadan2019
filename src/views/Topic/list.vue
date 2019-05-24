@@ -71,7 +71,9 @@ export default {
     // 验证答题状态，跳转
     goto(item, index) {
       item.serialNum = index;
-      if (item.canSHowProbelm === 1) {
+      if(item.canLottry){
+        this.$router.push('/turntable')
+      }else if (item.canSHowProbelm === 1) {
         if (item.hasChoose || item.corretComment) {
           this.$router.push({ name: "Answer", params: { data: item } });
         } else {

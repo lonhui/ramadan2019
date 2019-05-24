@@ -9,16 +9,16 @@
             <img class="icon" v-if="type === 3" src="static/images/icon_ovo@2x.png" alt="">
             <div class="content">
                 <!-- 获得积分 -->
-                <p class="successText" v-if="type === 1">
-                    Selamat kamu dapat THR Poin Caping senilai <span style="color:red">{{prize}}</span>.
+                <p class="successText" v-if="type === 3">
+                    Selamat kamu dapat THR Poin Caping senilai <span style="color:red">{{prizeName}}</span>.
                 </p>
                 <!-- 充值支付GOPAY -->
-                <p class="successText" v-if="type === 2">
-                    Kamu dapat THR saldo Go-Pay Rp <span style="color:red">{{prize}}</span>. Isi nomor hp mu di bawah ini dengan benar
+                <p class="successText" v-if="type === 5">
+                    Kamu dapat THR saldo Go-Pay <span style="color:red">{{prizeName}}</span>. Isi nomor hp mu di bawah ini dengan benar
                 </p>
                 <!-- 充值支付OVO -->
-                <p class="successText" v-if="type === 3">
-                    Kamu dapat THR pulsa Rp <span style="color:red">{{prize}}</span>. Isi nomor hp mu di bawah ini dengan benar
+                <p class="successText" v-if="type === 6">
+                    Kamu dapat THR pulsa <span style="color:red">{{prizeName}}</span>. Isi nomor hp mu di bawah ini dengan benar
                 </p>
                 <input type="number"  placeholder="08xxxxxxxxxx" v-if="type !== 1">`
             </div>
@@ -31,11 +31,10 @@
 
 <script>
 export default {
-    props:["prizeName"],
+    props:["prizeName","type"],
     data(){
         return{
-            prize:"5000",
-            type:1,
+           
         }
     },
     methods:{

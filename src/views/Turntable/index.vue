@@ -21,7 +21,7 @@
             <prizeDialogCall :prizeName = "prizeName" v-if="prizeCallShow" @on-close="closeDailog"></prizeDialogCall>
         </transition>
         <transition name="bounce">
-            <prozeDialog :prizeName = "prizeName" v-if="prizeShow" @on-close="closeDailog"></prozeDialog>
+            <prozeDialog :prizeName = "prizeName" :type="prizeType" v-if="prizeShow" @on-close="closeDailog"></prozeDialog>
         </transition>
         <transition name="fade">
             <loading v-show="loadingShow"></loading>
@@ -47,7 +47,8 @@ export default {
             prizeCallShow:false,
             prizeShow:false,
             prizeList:[],
-            prizeName:""
+            prizeName:"",
+            prizeType:null,
 
         }
     },
@@ -83,7 +84,7 @@ export default {
                     turntable.className ='turntabled';
                 },5900)
                 setTimeout(()=>{
-                    if(num % 2 === 0){
+                    if(this.prizeType === 4){
                         this.prizeCallShow = true
                         this.buttouStatus = true
                     }else{
@@ -102,12 +103,16 @@ export default {
             getTurntableList().then(res => {
                 if(res.code === 0){
                     res.data.list.forEach((item,index) => {
-                        if(item.remark.indexOf("积分") != -1){
-                            item.icon = coinImg
-                        }else if(item.remark.indexOf("Gopay") != -1){
-                            item.icon = rpImg
-                        }else if(item.remark.indexOf("Ovo") != -1){
-                            item.icon = dianImg
+                        switch(item.type){
+                            case 3:
+                                item.icon = coinImg
+                                break;
+                            case 5:
+                                item.icon = rpImg
+                                break;
+                            case 6:
+                                item.icon = dianImg
+                                break;
                         }
                     });
                     this.prizeList = res.data.list
@@ -121,9 +126,9 @@ export default {
         //抽奖
         lottery(){
             lottery().then(res => {
-                console.log(res)
                 if(res.code === 0){
                     this.prizeName = res.data.prizeName
+                    this.prizeType = res.data.type
                     this.prizeList.forEach((item,index)=>{
                         if(item.id === res.data.prizeId){
                             this.rotate(index+1)
