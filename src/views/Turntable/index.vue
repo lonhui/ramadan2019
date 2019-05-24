@@ -18,10 +18,10 @@
         <img class="turntable_base" src="static/images/Layer20.png" alt="">
         <img class="button butt" @click="lottery" src="static/images/but_ambilthr.png" alt="">
         <transition name="bounce">
-            <prizeDialogCall :prizeName = "prizeName" v-if="prizeCallShow" @on-close="closeDailog"></prizeDialogCall>
+            <prizeDialogCall :prizeName = "prizeName" :prizeId = "prizeId" v-if="prizeCallShow" @on-close="closeDailog"></prizeDialogCall>
         </transition>
         <transition name="bounce">
-            <prozeDialog :prizeName = "prizeName" :type="prizeType" v-if="prizeShow" @on-close="closeDailog"></prozeDialog>
+            <prozeDialog :prizeName = "prizeName" :prizeId = "prizeId" :type = "prizeType" v-if="prizeShow" @on-close="closeDailog"></prozeDialog>
         </transition>
         <transition name="fade">
             <loading v-show="loadingShow"></loading>
@@ -49,6 +49,7 @@ export default {
             prizeList:[],
             prizeName:"",
             prizeType:null,
+            prizeId:null,
 
         }
     },
@@ -129,6 +130,7 @@ export default {
                 if(res.code === 0){
                     this.prizeName = res.data.prizeName
                     this.prizeType = res.data.type
+                    this.prizeId = res.data.prizeId
                     this.prizeList.forEach((item,index)=>{
                         if(item.id === res.data.prizeId){
                             this.rotate(index+1)

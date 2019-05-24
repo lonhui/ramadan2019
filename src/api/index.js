@@ -32,3 +32,13 @@ export function lottery(){
         method: "post"
     })
 }
+
+// 抽奖之后的信息填写
+export function setRechargeInfo(data) {
+    return request({
+        url: '/lottery/doGiveWinning',
+        method: 'post',
+        headers:{"Content-Type":"application/json"},
+        data
+    })
+}

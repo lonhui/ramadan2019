@@ -4,24 +4,54 @@
             <p class="successText">
                 Kamu dapat THR <span style="color:red">{{prizeName}}</span>. Isi nomor hp mu di bawah ini dengan benar.
             </p>
-            <input type="number"  placeholder="08xxxxxxxxxx">
+            <input id="input" type="number" @change="verifyPhoneNum" v-model="phoneNum" placeholder="08xxxxxxxxxx">
             <div class="button butt" @click="close">Kirim</div>
         </div>
     </div>
 </template>
 
 <script>
+import {setRechargeInfo} from "@/api/index"
 
 export default {
-    props:["prizeName"],
+    props:["prizeName","prizeId"],
     data(){
         return{
-            prize:"5000"
+            phoneNum:null
         }
     },
     methods:{
         close(){
-            this.$emit("on-close");
+            if(this.phoneNum && this.phoneNum.length >= 8){
+                this.setInfo()
+            }else{
+                document.getElementById("input").style.borderBottomColor = "red"
+            }
+        },
+        verifyPhoneNum(){
+            if(this.phoneNum && this.phoneNum.length < 8){
+                document.getElementById("input").style.borderBottomColor = "red"
+            }
+        },
+        setInfo(){
+            let data = {
+                prizeId:this.prizeId,
+                accountOrMobile:this.phoneNum
+            }
+            setRechargeInfo(data).then(res => {
+                if(res.code === 0){
+                    this.$emit("on-close");
+                }
+            }).catch(error => {
+
+            })
+        }
+    },
+    watch:{
+        "phoneNum":function(){
+            if(this.phoneNum && this.phoneNum.length >= 8){
+                document.getElementById("input").style.borderBottomColor = "#82c345"
+            }
         }
     }
 }
