@@ -9,7 +9,7 @@
       <v-howFollowup v-if="howFollowupShow" @on-close="close_howFollowupShow"></v-howFollowup>
     </transition>
     <transition name="bounce">
-      <v-error :type="errorType" v-show="errorShow" @on-close="errorShow = false"></v-error>
+      <noLogin v-if="noLongShow" @on-close="noLongShow = false"></noLogin>
     </transition>
   </div>
 </template>
@@ -18,20 +18,21 @@
 import howFollowup from "./components/HowFollowup"
 import {setCookie,getCookie} from "@/util/Cookie"
 import error from "@/components/error"
+import noLogin from "@/components/noLogin"
 
 
 export default {
   data() {
     return {
-      errorShow:false,
+      noLongShow:false,
       howFollowupShow: false,
       user:{},
-      errorType:1,
     };
   },
   components: {
     "v-howFollowup": howFollowup,
-    "v-error":error
+    "v-error":error,
+    noLogin,
   },
   created(){
     this.getUidAndDid()
@@ -48,8 +49,7 @@ export default {
     // 验证uid & did,跳转到列表页
     goToList() {
       if(!getCookie("uid") || !getCookie("did")){
-        this.errorType = 1 
-        this.errorShow = true
+        this.noLongShow = true
       }else{
         this.$router.push("/list");
       }
@@ -66,9 +66,8 @@ export default {
           if(getCookie("uid")){
             this.user.uid = getCookie("uid")
           }else{
-            if(!this.errorShow){
-              this.errorType = 1
-              this.errorShow = true
+            if(!this.noLongShow){
+              this.noLongShow = true
             }
           }
         }
@@ -79,9 +78,8 @@ export default {
           if(getCookie("did")){
             this.user.deviceId = getCookie("did")
           }else{
-            if(!this.errorShow){
-              this.errorType = 1
-              this.errorShow = true
+            if(!this.noLongShow){
+              this.noLongShow = true
             }
           }
         }

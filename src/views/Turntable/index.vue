@@ -16,7 +16,7 @@
             <img class="turntable_border" src="static/images/bg_turntable.png" alt="">
         </div>
         <img class="turntable_base" src="@/assets/Layer20.png" alt="">
-        <img class="button butt" @click="lottery" src="static/images/but_ambilthr.png" alt="">
+        <img class="button butt" @click="lottery" src="@/assets/but_ambilthr.png" alt="">
         <transition name="bounce">
             <prizeDialogCall :prizeName = "prizeName" :prizeId = "prizeId" v-if="prizeCallShow" @on-close="closeDailog"></prizeDialogCall>
         </transition>
