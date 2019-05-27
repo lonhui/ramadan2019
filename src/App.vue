@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <loading :count="count" v-if="loadingShow"></loading>
+    <loading :count="count" v-show="loadingShow"></loading>
     <transition :name="transitionName">
       <keep-alive :include="keepAlive">
         <router-view class="Router" v-wechat-title="$route.meta.title"/>

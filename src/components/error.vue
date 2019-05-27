@@ -16,7 +16,7 @@ export default {
     data(){
         return{
             textArr:{
-                noLogin:"kamu harus login dulu untuk!",
+                maxLottery:"Jumlah undian telah digunakan hari ini, silakan kembali besok!",
                 noInter:"Koneksi internet tidak stabil. Silahkan coba lagi ya!"
             },
             text:null
@@ -25,7 +25,7 @@ export default {
     created(){
         switch(this.type){
             case 1:
-                this.text = this.textArr.noLogin
+                this.text = this.textArr.maxLottery
                 break;
             case 2:
                 this.text = this.textArr.noInter

@@ -27,7 +27,7 @@
             <loading v-show="loadingShow"></loading>
         </transition>
         <transition name="bounce">
-            <v-error :type="2" v-show="errorShow" @on-close="errorShow = false"></v-error>
+            <v-error :type="errorType" v-show="errorShow" @on-close="errorShow = false"></v-error>
         </transition>
     </div>
 </template>
@@ -47,6 +47,7 @@ export default {
     data(){
         return{
             errorShow:false,
+            errorType:2,
             loadingShow:false,
             buttouStatus:true,//控制按钮是否可点击，转盘转动结束前不许用户记继续发送请求
             prizeCallShow:false,
@@ -118,12 +119,17 @@ export default {
                         }
                     });
                     this.prizeList = res.data.list
+                }else if(res.code === 603){
+                    this.errorType = 1
+                    this.errorShow = true
                 }else{
+                    this.errorType = 2
                     this.errorShow = true
                 }
                 this.loadingShow = false
             }).catch(error =>{
                 this.loadingShow = false
+                this.errorType = 2
                 this.errorShow = true
             })
         },
