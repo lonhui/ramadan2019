@@ -2,11 +2,11 @@
     <div id="prizeDialog" @touchmove.prevent>
         <div class="box">
             <!-- 积分icon -->
-            <img class="icon" v-if="type === 3" src="static/images/icon_poin@2x.png" alt="">
+            <img class="icon" v-if="type === 3" src="@/assets/icon_poin@2x.png" alt="">
             <!-- GOPAY icon -->
-            <img class="icon" v-if="type === 5" src="static/images/icon_gopay@2x.png" alt="">
+            <img class="icon" v-if="type === 5" src="@/assets/icon_gopay@2x.png" alt="">
             <!-- OVO icon -->
-            <img class="icon" v-if="type === 6" src="static/images/icon_ovo@2x.png" alt="">
+            <img class="icon" v-if="type === 6" src="@/assets/icon_ovo@2x.png" alt="">
             <div class="content">
                 <!-- 获得积分 -->
                 <p class="successText" v-if="type === 3">

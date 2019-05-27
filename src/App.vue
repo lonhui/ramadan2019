@@ -42,18 +42,8 @@ export default {
         "static/images/bg_turntable.png",
         "static/images/bg@2x.png",
         "static/images/Popups_bg@2x.png",
-        "static/images/quiz_bg_green@2x.png",
         "static/images/title_thecaping.png",
-        "static/images/word_selamat@2x.png",
-        "static/images/word_tahukankamu@2x.png",
-
-        "static/images/but_ambilthr.png",
-        "static/images/icon_gopay@2x.png",
-        "static/images/icon_ovo@2x.png",
-        "static/images/icon_poin@2x.png",
-        "static/images/Layer20.png",
-        "static/images/popups_bg_white@2x.png",
-        "static/images/quiz_bg_white@2x.png"
+        "static/images/word_selamat@2x.png"
       ];
       for (let img of imgs) {
         let image = new Image();

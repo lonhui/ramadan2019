@@ -10,7 +10,7 @@
                 <div></div>
             </div>
             <div class="number">
-                {{count? (count/20*100).toFixed(0)+"%" :"Loading"}}
+                {{count? (count/11*100).toFixed(0)+"%" :"Loading"}}
             </div>
         </div>
     </div>

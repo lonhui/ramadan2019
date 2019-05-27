@@ -1,7 +1,7 @@
 <template>
     <div id="answer">
         <!-- 答案页面 -->
-        <img class="title" src="static/images/word_tahukankamu@2x.png" alt="">
+        <img class="title" src="@/assets/word_tahukankamu@2x.png" alt="">
         <div class="box">
             <p>{{text}}</p>
         </div>

@@ -15,7 +15,7 @@
             </ul>
             <img class="turntable_border" src="static/images/bg_turntable.png" alt="">
         </div>
-        <img class="turntable_base" src="static/images/Layer20.png" alt="">
+        <img class="turntable_base" src="@/assets/Layer20.png" alt="">
         <img class="button butt" @click="lottery" src="static/images/but_ambilthr.png" alt="">
         <transition name="bounce">
             <prizeDialogCall :prizeName = "prizeName" :prizeId = "prizeId" v-if="prizeCallShow" @on-close="closeDailog"></prizeDialogCall>
@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import coinImg from "../../../static/images/icon_poin@2x.png";
-import rpImg from "../../../static/images/icon_gopay@2x.png";
-import dianImg from "../../../static/images/icon_ovo@2x.png";
+import coinImg from "../../assets/icon_poin@2x.png";
+import rpImg from "../../assets/icon_gopay@2x.png";
+import dianImg from "../../assets/icon_ovo@2x.png";
 import prizeDialogCall from "./components/prizeDialog_call"//话费奖品弹框
 import prozeDialog from "./components/prizeDialog"//其余奖品弹框
 import {getTurntableList,lottery} from "@/api/index"
@@ -138,20 +138,6 @@ export default {
                     this.prizeName = res.data.prizeName
                     this.prizeType = res.data.type
                     this.prizeId = res.data.prizeId
-                    switch(res.data.type){
-                        case 3:
-                            console.log("积分")
-                            break;
-                        case 4:
-                            console.log("话费")
-                            break;
-                        case 5:
-                            console.log("Go-Pay")
-                            break;
-                        case 6:
-                            console.log("Ovo")
-                            break;
-                    }
                     this.prizeList.forEach((item,index)=>{
                         if(item.id === res.data.prizeId){
                             this.rotate(index+1)

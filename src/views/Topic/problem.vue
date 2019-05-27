@@ -143,7 +143,7 @@ export default {
 .title {
   height: 0.34rem;
   border-radius: 0.05rem 0.05rem 0 0;
-  background: url("../../../static/images/quiz_bg_green@2x.png");
+  background: url("../../assets/quiz_bg_green@2x.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   display: flex;
@@ -223,7 +223,7 @@ export default {
   height: 0.35rem;
   font-size: 0.18rem;
   color: #fff;
-  background: url("../../../static/images/quiz_bg_green@2x.png");
+  background: url("../../assets/quiz_bg_green@2x.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   border-radius: 0 0 0.06rem 0.06rem;
