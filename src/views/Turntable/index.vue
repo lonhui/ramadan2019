@@ -97,10 +97,7 @@ export default {
                         this.buttouStatus = true
                     }
                 },6000)
-            }else{
-                console.log("转盘停止后可点击！！！")
             }
-            
         },
         //获取转盘奖品列表
         getTurntableList(){

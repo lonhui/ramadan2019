@@ -40,9 +40,7 @@ export default {
         }
     },
     created(){
-        console.log("type : "+this.type)
-        console.log("prizeName : "+this.prizeName)
-        console.log("prizeId : "+this.prizeId)
+   
     },
     methods:{
         close(){

@@ -80,7 +80,6 @@ export default {
     "v-error":error
   },
   created() {
-    console.log(this.$router.currentRoute.params.data)
     if(this.$router.currentRoute.params.data){
       let item = this.$router.currentRoute.params.data
       let title = item.num
@@ -107,7 +106,6 @@ export default {
         chooseNum:item.id
       }
       verifyAnswer(data).then( res =>{
-        console.log(res)
         if(res.code === 0){
           this.optionList[index].selectStatus = true;
           this.$router.currentRoute.params.data.corret = res.data.corret
