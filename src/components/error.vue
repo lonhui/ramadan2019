@@ -12,7 +12,7 @@
 <script>
 
 export default {
-    props:["type"],
+    props:["type"],//1未登陆，2网络错误
     data(){
         return{
             textArr:{

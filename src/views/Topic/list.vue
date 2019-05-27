@@ -26,27 +26,38 @@
     <transition name="fade">
       <loading v-show="loadingShow"></loading>
     </transition>
+    <transition name="bounce">
+      <v-error :type="errorType" v-show="errorShow" @on-close="closeError"></v-error>
+    </transition>
   </div>
 </template>
 
 <script>
 import { questionsList } from "@/api/index";
 import loading from "@/components/loading"
+import error from "@/components/error"
 
 export default {
   data() {
     return {
+      errorType:2,
+      errorShow:false,
       loadingShow:false,
       list: []
     };
   },
   components:{
-    loading
+    loading,
+    "v-error":error
   },
   created() {
     this.getList();
   },
   methods: {
+    closeError(){
+      this.errorShow = false
+      this.$router.push('/')
+    },
     // 获取列表数据
     getList() {
       this.loadingShow = true
@@ -60,12 +71,16 @@ export default {
               item.num = "QUIZ " + (index < 9 ? "0" + (index + 1) : index + 1);
             });
             this.list = list;
-            console.log(list);
+          }else{
+            this.errorType = 2
+            this.errorShow = true
           }
           this.loadingShow = false
         })
         .catch(error => {
           this.loadingShow = false
+          this.errorType = 2
+          this.errorShow = true
         });
     },
     // 验证答题状态，跳转
@@ -188,5 +203,23 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+/* 弹窗过渡动画 */
+.bounce-enter-active {
+  animation: bounce-in 0.5s;
+}
+.bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 </style>

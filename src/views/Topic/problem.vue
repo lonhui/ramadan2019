@@ -30,18 +30,28 @@
     <transition name="bounce">
         <errorDialog v-show="errDialogShow" @on-close="closeDialog"></errorDialog>
     </transition>
+    <transition name="fade">
+      <loading v-show="loadingShow"></loading>
+    </transition>
+    <transition name="bounce">
+      <v-error :type="2" v-show="errorShow" @on-close="errorShow = false"></v-error>
+    </transition>
   </div>
 </template>
 
 <script>
 import successDialog from "./components/successDialog";
 import errorDialog from "./components/errorDialog";
+import loading from "@/components/loading";
+import error from "@/components/error";
 import {verifyAnswer} from "@/api/index"
 import {getCookie} from "@/util/Cookie"
 
 export default {
   data() {
     return {
+      loadingShow:false,
+      errorShow:false,
       sucDialogShow: false,
       errDialogShow: false,
       title:'',//标题
@@ -65,7 +75,9 @@ export default {
   },
   components: {
     successDialog,
-    errorDialog
+    errorDialog,
+    loading,
+    "v-error":error
   },
   created() {
     console.log(this.$router.currentRoute.params.data)
@@ -88,6 +100,7 @@ export default {
       this.$router.push({name:'Answer',params:{data:this.$router.currentRoute.params.data}})
     },
     select(item, index) {
+      this.loadingShow = true
       let data = {
         uid:getCookie("uid"),
         problemId:this.$router.currentRoute.params.data.id,
@@ -106,9 +119,13 @@ export default {
             this.answerResult = false;
             this.errDialogShow = true;
           }
+        }else{
+          this.errorShow = true
         }
+        this.loadingShow = false
       }).catch( error => {
-
+        this.loadingShow = false
+        this.errorShow = true
       })
     }
   }
@@ -245,5 +262,11 @@ export default {
   100% {
     transform: scale(1);
   }
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

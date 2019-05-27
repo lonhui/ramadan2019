@@ -2,11 +2,11 @@
     <div id="prizeDialog" @touchmove.prevent>
         <div class="box">
             <!-- 积分icon -->
-            <img class="icon" v-if="type === 1" src="static/images/icon_poin@2x.png" alt="">
+            <img class="icon" v-if="type === 3" src="static/images/icon_poin@2x.png" alt="">
             <!-- GOPAY icon -->
-            <img class="icon" v-if="type === 2" src="static/images/icon_gopay@2x.png" alt="">
+            <img class="icon" v-if="type === 5" src="static/images/icon_gopay@2x.png" alt="">
             <!-- OVO icon -->
-            <img class="icon" v-if="type === 3" src="static/images/icon_ovo@2x.png" alt="">
+            <img class="icon" v-if="type === 6" src="static/images/icon_ovo@2x.png" alt="">
             <div class="content">
                 <!-- 获得积分 -->
                 <p class="successText" v-if="type === 3">
@@ -20,7 +20,7 @@
                 <p class="successText" v-if="type === 6">
                     Kamu dapat THR pulsa <span style="color:red">{{prizeName}}</span>. Isi nomor hp mu di bawah ini dengan benar
                 </p>
-                <input type="number" id="input" v-model="phoneNum"  placeholder="08xxxxxxxxxx" v-if="type !== 1">`
+                <input type="number" id="input" v-model="phoneNum"  placeholder="08xxxxxxxxxx" v-if="type !== 3">`
             </div>
             
             <div class="button butt" @click="close">Kirim</div>
@@ -39,9 +39,14 @@ export default {
            phoneNum:null
         }
     },
+    created(){
+        console.log("type : "+this.type)
+        console.log("prizeName : "+this.prizeName)
+        console.log("prizeId : "+this.prizeId)
+    },
     methods:{
         close(){
-            if(type !== 3){
+            if(this.type !== 3){
                 if(this.phoneNum && this.phoneNum.length >= 8){
                     this.setInfo()
                 }else{

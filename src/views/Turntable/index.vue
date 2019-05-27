@@ -26,6 +26,9 @@
         <transition name="fade">
             <loading v-show="loadingShow"></loading>
         </transition>
+        <transition name="bounce">
+            <v-error :type="2" v-show="errorShow" @on-close="errorShow = false"></v-error>
+        </transition>
     </div>
 </template>
 
@@ -37,13 +40,15 @@ import prizeDialogCall from "./components/prizeDialog_call"//话费奖品弹框
 import prozeDialog from "./components/prizeDialog"//其余奖品弹框
 import {getTurntableList,lottery} from "@/api/index"
 import loading from "@/components/loading"
+import error from "@/components/error"
 
 
 export default {
     data(){
         return{
+            errorShow:false,
             loadingShow:false,
-            buttouStatus:true,
+            buttouStatus:true,//控制按钮是否可点击，转盘转动结束前不许用户记继续发送请求
             prizeCallShow:false,
             prizeShow:false,
             prizeList:[],
@@ -56,7 +61,8 @@ export default {
     components:{
         prizeDialogCall,
         prozeDialog,
-        loading
+        loading,
+        "v-error":error
     },
     created(){
         this.getTurntableList()
@@ -115,15 +121,18 @@ export default {
                         }
                     });
                     this.prizeList = res.data.list
+                }else{
+                    this.errorShow = true
                 }
-                console.log(this.prizeList)
                 this.loadingShow = false
             }).catch(error =>{
                 this.loadingShow = false
+                this.errorShow = true
             })
         },
         //抽奖
         lottery(){
+            this.loadingShow = true
             lottery().then(res => {
                 if(res.code === 0){
                     this.prizeName = res.data.prizeName
@@ -148,9 +157,13 @@ export default {
                             this.rotate(index+1)
                         }
                     })
+                }else{
+                    this.errorShow = true
                 }
+                this.loadingShow = false
             }).catch(error => {
-
+                this.loadingShow = true
+                this.errorShow = true
             })
         }
     }
