@@ -164,7 +164,7 @@ export default {
 .optionBox {
   width: 3.6rem;
   height: 4.87rem;
-  background: url("../../../static/images/quiz_bg@2x.png");
+  background: url("../../../static/images/quiz_bg@2x.jpeg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }

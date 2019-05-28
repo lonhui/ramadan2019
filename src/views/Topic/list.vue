@@ -102,7 +102,7 @@ export default {
 #list {
   width: 3.6rem;
   height: 8.1rem;
-  background: url("../../../static/images/capingvcr_thrcaping_bgpanjang@2x.png");
+  background: url("../../../static/images/capingvcr_thrcaping_bgpanjang@2x.jpeg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   font-family: OpenSans;

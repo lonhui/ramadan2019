@@ -163,7 +163,7 @@ export default {
 #Turntable{
     width: 3.6rem;
     height: 6.4rem;
-    background: url("../../../static/images/turntable_bg.png");
+    background: url("../../../static/images/turntable_bg.jpeg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     text-align: center;
