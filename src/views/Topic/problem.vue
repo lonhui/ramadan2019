@@ -10,7 +10,7 @@
     <div class="optionBox">
       <p class="text">Kamu Hanya Bisa Memilih Sekali.</p>
       <div
-        :class="{'optionList':optionList[0].value.length<20,'optionList2':optionList[0].value.length>20}"
+        :class="{'optionList':optionList[0].value.length<22,'optionList2':optionList[0].value.length>20}"
       >
         <div
           class="option butt"

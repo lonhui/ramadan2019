@@ -50,9 +50,11 @@ export default {
         image.src = img;
         image.onload = () => {
           this.count++;
+          if(this.count >= 11){
+            this.loadingShow = false;
+          }
         };
       }
-      this.loadingShow = false;
     }
   },
   watch: {

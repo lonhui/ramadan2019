@@ -41,13 +41,9 @@ export default {
     z-index: 100;
     top: 0;
     left: 0;
-    width: 3.6rem;
-    height: 6.4rem;
+    width: 100%;
+    height: 100%;
     background-color: rgba(7, 17, 27, 0.8);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 .number{
     color: #fff;
@@ -57,6 +53,8 @@ export default {
     text-align:center;
 } 
 #Loading {
+    width: 3.6rem;
+    height: 6.4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;

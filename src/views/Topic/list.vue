@@ -15,7 +15,7 @@
       >
         <div class="itemHeader">{{item.num}}</div>
         <div class="content">
-          <div class="topic">{{item.dec}}</div>
+          <div class="topic">{{item.describe}}</div>
           <div
             class="button butt"
             @click="goto(item,index)"
@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <transition name="fade">
+    <transition class="loading"  name="fade">
       <loading v-show="loadingShow"></loading>
     </transition>
     <transition name="bounce">
@@ -66,8 +66,6 @@ export default {
           if (res.code === 0) {
             let list = res.data.problemInfos;
             list.forEach((item, index, arr) => {
-              item.dec =
-                item.title.split(" ")[0] + " " + item.title.split(" ")[1];
               item.num = "QUIZ " + (index < 9 ? "0" + (index + 1) : index + 1);
             });
             this.list = list;

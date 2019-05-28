@@ -12,10 +12,9 @@ import {getCookie} from './Cookie'
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: process.env.BASE_API,//域名或IP
+  // baseURL: process.env.BASE_API,//域名或IP
   timeout: 15000 // 请求超时时间
 })
-
 axios.defaults.withCredentials = true
 
 // request拦截器
