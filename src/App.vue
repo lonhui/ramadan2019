@@ -33,11 +33,11 @@ export default {
   methods: {
     preload() {
       let imgs = [
-        "static/images/capingvcr_bg_thecaping@2x.png",
-        "static/images/capingvcr_bg@2x.png",
-        "static/images/capingvcr_thrcaping_bgpanjang@2x.png",
-        "static/images/quiz_bg@2x.png",
-        "static/images/turntable_bg.png",
+        "static/images/capingvcr_bg_thecaping@2x.jpeg",
+        "static/images/capingvcr_bg@2x.jpeg",
+        "static/images/capingvcr_thrcaping_bgpanjang@2x.jpeg",
+        "static/images/quiz_bg@2x.jpeg",
+        "static/images/turntable_bg.jpeg",
         "static/images/bg_Layer.png",
         "static/images/bg_turntable.png",
         "static/images/bg@2x.png",
